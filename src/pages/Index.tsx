@@ -15,62 +15,83 @@ export default function Index() {
     <div className="flex flex-col">
       {/* Hero Section - Direct and Objective */}
       <section className="relative pt-20 pb-16 md:pt-32 md:pb-24 overflow-hidden">
-        <div className="container relative z-10">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm text-primary font-medium mb-4 animate-fade-in-up">
-              <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
-              Para Pequenas e Médias Empresas
-            </div>
-
-            <h1
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-foreground animate-fade-in-up leading-[1.1]"
-              style={{ animationDelay: '100ms' }}
-            >
-              Sua empresa perde dinheiro por falta de{' '}
-              <span className="text-primary italic">organização</span>?
-            </h1>
-
-            <p
-              className="text-xl md:text-2xl text-muted-foreground animate-fade-in-up max-w-3xl mx-auto"
-              style={{ animationDelay: '200ms' }}
-            >
-              Assuma o controle total. Automatize seu atendimento, feche mais negócios e tenha
-              clareza financeira imediata com a plataforma VexaView.
-            </p>
-
-            <div
-              className="flex flex-col sm:flex-row justify-center gap-4 pt-4 animate-fade-in-up"
-              style={{ animationDelay: '300ms' }}
-            >
-              <Button
-                size="lg"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground h-14 px-8 text-lg w-full sm:w-auto shadow-elevation hover:scale-105 transition-transform"
-                asChild
-              >
-                <Link to="/cadastro">
-                  Criar Conta Agora <ChevronRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="h-14 px-8 text-lg w-full sm:w-auto bg-background/50 backdrop-blur-sm"
-                asChild
-              >
-                <Link to="/contato">Falar com um Especialista</Link>
-              </Button>
-            </div>
-            <p
-              className="text-sm text-muted-foreground pt-2 animate-fade-in-up"
-              style={{ animationDelay: '400ms' }}
-            >
-              Não requer cartão de crédito. Configuração em 5 minutos.
-            </p>
-          </div>
+        {/* Eye-catching Background Elements */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[600px] opacity-40 pointer-events-none -z-10">
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-r from-primary/50 via-primary/30 to-primary/50 rounded-full blur-[100px] animate-pulse"
+            style={{ animationDuration: '4s' }}
+          ></div>
+          <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/40 rounded-full blur-[120px]"></div>
+          <div className="absolute top-1/2 right-1/4 translate-x-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-primary/30 rounded-full blur-[100px]"></div>
         </div>
 
-        {/* Abstract Background Elements */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+        <div className="container relative z-10">
+          <div className="max-w-5xl mx-auto text-center space-y-8 relative">
+            {/* Visual Glass Box Behind Content */}
+            <div className="absolute inset-0 -z-10 bg-background/40 backdrop-blur-3xl rounded-[3rem] border border-primary/20 shadow-2xl scale-105 md:scale-110 transform translate-y-2">
+              <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent rounded-[3rem]"></div>
+              {/* Inner glowing edge */}
+              <div className="absolute inset-px rounded-[calc(3rem-1px)] border border-white/10 dark:border-white/5 pointer-events-none"></div>
+            </div>
+
+            <div className="pt-10 md:pt-14 pb-8 md:pb-12 px-4">
+              <div className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-5 py-2 text-sm text-primary font-semibold mb-6 animate-fade-in-up shadow-[0_0_15px_hsl(var(--primary)/0.2)]">
+                <span className="flex h-2.5 w-2.5 rounded-full bg-primary mr-2.5 animate-pulse"></span>
+                Para Pequenas e Médias Empresas
+              </div>
+
+              <h1
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-foreground animate-fade-in-up leading-[1.15] text-balance"
+                style={{ animationDelay: '100ms' }}
+              >
+                Sua empresa perde dinheiro por falta de{' '}
+                <span className="text-primary italic relative inline-block">
+                  organização
+                  <span className="absolute -bottom-2 left-0 w-full h-2 bg-primary/30 rounded-full blur-sm"></span>
+                  <span className="absolute -bottom-2 left-0 w-full h-1 bg-primary/60 rounded-full"></span>
+                </span>
+                ?
+              </h1>
+
+              <p
+                className="text-xl md:text-2xl text-foreground/80 animate-fade-in-up max-w-3xl mx-auto mt-8 font-medium leading-relaxed"
+                style={{ animationDelay: '200ms' }}
+              >
+                Assuma o controle total. Automatize seu atendimento, feche mais negócios e tenha
+                clareza financeira imediata com a plataforma VexaView.
+              </p>
+
+              <div
+                className="flex flex-col sm:flex-row justify-center gap-5 pt-10 animate-fade-in-up"
+                style={{ animationDelay: '300ms' }}
+              >
+                <Button
+                  size="lg"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground h-16 px-10 text-xl w-full sm:w-auto shadow-[0_8px_30px_hsl(var(--primary)/0.4)] hover:shadow-[0_8px_40px_hsl(var(--primary)/0.6)] hover:-translate-y-1 transition-all rounded-full"
+                  asChild
+                >
+                  <Link to="/cadastro">
+                    Criar Conta Agora <ChevronRight className="ml-2 h-6 w-6" />
+                  </Link>
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="h-16 px-10 text-xl w-full sm:w-auto bg-background/80 backdrop-blur-md border-primary/20 hover:bg-primary/10 rounded-full transition-all text-foreground"
+                  asChild
+                >
+                  <Link to="/contato">Falar com um Especialista</Link>
+                </Button>
+              </div>
+              <p
+                className="text-sm text-foreground/60 pt-6 animate-fade-in-up font-medium"
+                style={{ animationDelay: '400ms' }}
+              >
+                Não requer cartão de crédito. Configuração em 5 minutos.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* The "Pain" Section - Focused on immediate connection with user problems */}
