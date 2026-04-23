@@ -9,8 +9,13 @@ import {
   Users,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
+import Autoplay from 'embla-carousel-autoplay'
+import React from 'react'
 
 export default function Index() {
+  const plugin = React.useRef(Autoplay({ delay: 3000, stopOnInteraction: true }))
+
   return (
     <div className="flex flex-col">
       {/* Hero Section - Direct and Objective */}
@@ -90,6 +95,44 @@ export default function Index() {
                 Não requer cartão de crédito. Configuração em 5 minutos.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Clients/Logos Section */}
+      <section className="py-12 bg-background border-b overflow-hidden">
+        <div className="container">
+          <p className="text-center text-sm font-semibold text-muted-foreground mb-8 uppercase tracking-widest">
+            Empresas que confiam na VexaView
+          </p>
+          <div className="max-w-6xl mx-auto">
+            <Carousel
+              opts={{
+                align: 'start',
+                loop: true,
+              }}
+              plugins={[plugin.current]}
+              className="w-full"
+            >
+              <CarouselContent className="items-center -ml-4 md:-ml-8">
+                {['google', 'microsoft', 'spotify', 'amazon', 'netflix', 'meta'].map(
+                  (logo, index) => (
+                    <CarouselItem
+                      key={index}
+                      className="pl-4 md:pl-8 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6"
+                    >
+                      <div className="flex items-center justify-center h-16 opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300">
+                        <img
+                          src={`https://img.usecurling.com/i?q=${logo}&color=solid-black&shape=fill`}
+                          alt={`Logo ${logo}`}
+                          className="max-h-8 max-w-[120px] object-contain dark:invert"
+                        />
+                      </div>
+                    </CarouselItem>
+                  ),
+                )}
+              </CarouselContent>
+            </Carousel>
           </div>
         </div>
       </section>
