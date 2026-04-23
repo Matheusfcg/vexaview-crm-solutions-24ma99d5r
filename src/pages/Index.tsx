@@ -211,8 +211,8 @@ export default function Index() {
             <div className="order-2 lg:order-1 relative group">
               <div className="absolute -inset-2 bg-primary/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <img
-                src="https://img.usecurling.com/p/600/450?q=chat%20app&color=gray"
-                alt="Chatbots de Atendimento"
+                src="https://img.usecurling.com/p/600/450?q=chatbot%20conversation&color=gray"
+                alt="Cliente conversando com Chatbot"
                 className="rounded-2xl shadow-elevation border border-muted relative z-10 w-full"
               />
             </div>
