@@ -1,11 +1,11 @@
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import {
   BarChart3,
+  CheckCircle2,
   ChevronRight,
   MessageSquareText,
   PlayCircle,
-  TrendingUp,
   Users,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
@@ -13,205 +13,298 @@ import { Link } from 'react-router-dom'
 export default function Index() {
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-muted/50 to-background pt-24 pb-32">
-        <div className="container relative z-10 flex flex-col items-center text-center">
-          <div
-            className="inline-flex items-center rounded-full border bg-background px-3 py-1 text-sm text-muted-foreground mb-8 animate-fade-in-up"
-            style={{ animationDelay: '0ms' }}
-          >
-            <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
-            Nova Plataforma de Gestão 2026
-          </div>
-          <h1
-            className="font-heading text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-foreground max-w-4xl mb-6 animate-fade-in-up"
-            style={{ animationDelay: '100ms' }}
-          >
-            Transforme sua <span className="text-primary italic">desorganização</span> em lucro
-            real.
-          </h1>
-          <p
-            className="text-xl text-muted-foreground max-w-2xl mb-10 animate-fade-in-up"
-            style={{ animationDelay: '200ms' }}
-          >
-            VexaView é a solução definitiva de CRM, Chatbots e Dashboards projetada para PMEs que
-            desejam automatizar vendas e dominar suas finanças.
-          </p>
-          <div
-            className="flex flex-col sm:flex-row gap-4 animate-fade-in-up"
-            style={{ animationDelay: '300ms' }}
-          >
-            <Button
-              size="lg"
-              className="bg-primary hover:bg-secondary text-primary-foreground h-14 px-8 text-base transition-all duration-300 hover:scale-105"
-              asChild
+      {/* Hero Section - Direct and Objective */}
+      <section className="relative pt-20 pb-16 md:pt-32 md:pb-24 overflow-hidden">
+        <div className="container relative z-10">
+          <div className="max-w-4xl mx-auto text-center space-y-8">
+            <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm text-primary font-medium mb-4 animate-fade-in-up">
+              <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
+              Para Pequenas e Médias Empresas
+            </div>
+
+            <h1
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-foreground animate-fade-in-up leading-[1.1]"
+              style={{ animationDelay: '100ms' }}
             >
-              <Link to="/contato">Começar Agora</Link>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="h-14 px-8 text-base bg-background/50 backdrop-blur-sm"
+              Sua empresa perde dinheiro por falta de{' '}
+              <span className="text-primary italic">organização</span>?
+            </h1>
+
+            <p
+              className="text-xl md:text-2xl text-muted-foreground animate-fade-in-up max-w-3xl mx-auto"
+              style={{ animationDelay: '200ms' }}
             >
-              <PlayCircle className="mr-2 h-5 w-5 text-primary" />
-              Ver Vídeo
-            </Button>
+              Assuma o controle total. Automatize seu atendimento, feche mais negócios e tenha
+              clareza financeira imediata com a plataforma VexaView.
+            </p>
+
+            <div
+              className="flex flex-col sm:flex-row justify-center gap-4 pt-4 animate-fade-in-up"
+              style={{ animationDelay: '300ms' }}
+            >
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground h-14 px-8 text-lg w-full sm:w-auto shadow-elevation hover:scale-105 transition-transform"
+                asChild
+              >
+                <Link to="/cadastro">
+                  Criar Conta Agora <ChevronRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="h-14 px-8 text-lg w-full sm:w-auto bg-background/50 backdrop-blur-sm"
+                asChild
+              >
+                <Link to="/contato">Falar com um Especialista</Link>
+              </Button>
+            </div>
+            <p
+              className="text-sm text-muted-foreground pt-2 animate-fade-in-up"
+              style={{ animationDelay: '400ms' }}
+            >
+              Não requer cartão de crédito. Configuração em 5 minutos.
+            </p>
           </div>
         </div>
 
-        {/* Decorative background elements */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl -z-10"></div>
+        {/* Abstract Background Elements */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
       </section>
 
-      {/* Social Proof Marquee */}
-      <section className="border-y bg-muted/30 py-10 overflow-hidden flex items-center">
-        <div className="container md:w-auto md:mr-8 text-sm font-medium text-muted-foreground whitespace-nowrap">
-          CONFIADO POR EMPRESAS INOVADORAS:
-        </div>
-        <div className="flex flex-1 overflow-hidden relative mask-image-linear-gradient">
-          <div className="flex min-w-full shrink-0 animate-marquee items-center justify-around gap-16 px-8">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <img
-                key={i}
-                src={`https://img.usecurling.com/i?q=company%20logo&shape=outline&color=gray&seed=${i}`}
-                alt="Logo"
-                className="h-8 object-contain opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all"
-              />
-            ))}
-          </div>
-          <div
-            className="flex min-w-full shrink-0 animate-marquee items-center justify-around gap-16 px-8"
-            aria-hidden="true"
-          >
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <img
-                key={`dup-${i}`}
-                src={`https://img.usecurling.com/i?q=company%20logo&shape=outline&color=gray&seed=${i}`}
-                alt="Logo"
-                className="h-8 object-contain opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all"
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* The Big Three (Services) */}
-      <section className="py-24 container">
-        <div className="text-center mb-16">
-          <h2 className="font-heading text-4xl font-bold mb-4">
-            Soluções integradas para o seu crescimento
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Tudo que você precisa para capturar, engajar e analisar em um único ecossistema
-            sofisticado.
-          </p>
-        </div>
-        <div className="grid md:grid-cols-3 gap-8">
-          <Card className="group hover:shadow-elevation transition-all duration-300 border-muted bg-card/50 backdrop-blur-sm hover:-translate-y-1">
-            <CardHeader>
-              <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                <Users className="h-6 w-6 text-primary group-hover:text-primary-foreground" />
-              </div>
-              <CardTitle className="text-2xl">CRM Vexa</CardTitle>
-              <CardDescription className="text-base">Gestão inteligente de funil.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-6">
-                Automatize follow-ups, organize seus leads em um kanban visual e nunca mais perca
-                uma oportunidade de venda por falta de organização.
-              </p>
-              <Link
-                to="/crm"
-                className="text-primary font-medium flex items-center hover:text-secondary"
-              >
-                Conhecer o CRM <ChevronRight className="ml-1 h-4 w-4" />
-              </Link>
-            </CardContent>
-          </Card>
-
-          <Card className="group hover:shadow-elevation transition-all duration-300 border-muted bg-card/50 backdrop-blur-sm hover:-translate-y-1">
-            <CardHeader>
-              <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                <MessageSquareText className="h-6 w-6 text-primary group-hover:text-primary-foreground" />
-              </div>
-              <CardTitle className="text-2xl">Chatbots Vexa</CardTitle>
-              <CardDescription className="text-base">
-                Atendimento 24/7 automatizado.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-6">
-                Agentes de IA que qualificam leads, agendam reuniões e respondem dúvidas frequentes
-                diretamente no seu site ou WhatsApp.
-              </p>
-              <Link
-                to="/chatbots"
-                className="text-primary font-medium flex items-center hover:text-secondary"
-              >
-                Ver Chatbots <ChevronRight className="ml-1 h-4 w-4" />
-              </Link>
-            </CardContent>
-          </Card>
-
-          <Card className="group hover:shadow-elevation transition-all duration-300 border-muted bg-card/50 backdrop-blur-sm hover:-translate-y-1">
-            <CardHeader>
-              <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                <BarChart3 className="h-6 w-6 text-primary group-hover:text-primary-foreground" />
-              </div>
-              <CardTitle className="text-2xl">Dashboards</CardTitle>
-              <CardDescription className="text-base">Decisões baseadas em dados.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-6">
-                Painéis visuais deslumbrantes que traduzem a saúde financeira e o desempenho de
-                vendas da sua empresa em tempo real.
-              </p>
-              <Link
-                to="/dashboards"
-                className="text-primary font-medium flex items-center hover:text-secondary"
-              >
-                Explorar Dashboards <ChevronRight className="ml-1 h-4 w-4" />
-              </Link>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Pain Point Section (Before / After) */}
-      <section id="casos" className="bg-secondary text-secondary-foreground py-24">
+      {/* The "Pain" Section - Focused on immediate connection with user problems */}
+      <section className="py-20 bg-muted/30 border-y">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="font-heading text-4xl font-bold mb-6">
-                O fim das planilhas perdidas e clientes ignorados.
-              </h2>
-              <p className="text-secondary-foreground/80 text-lg mb-8">
-                Empresas perdem até 30% da receita anual devido à má gestão de leads e processos
-                manuais. Com o VexaView, centralizamos sua operação para que você foque no que
-                importa: fechar negócios.
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Você se identifica com algum destes problemas?
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              A falta de processos definidos custa caro. Identifique onde sua operação está
+              sangrando.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <Card className="bg-background/80 backdrop-blur-sm border-none shadow-subtle hover:shadow-elevation transition-shadow duration-300">
+              <CardContent className="pt-8">
+                <div className="h-12 w-12 rounded-full bg-red-100 dark:bg-red-900/20 flex items-center justify-center mb-6">
+                  <span className="text-red-600 dark:text-red-400 font-bold text-xl">1</span>
+                </div>
+                <h3 className="text-xl font-bold mb-3">Leads perdidos</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Clientes chamam no WhatsApp e ficam sem resposta, ou são esquecidos em planilhas
+                  desatualizadas enquanto a concorrência atende rápido.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-background/80 backdrop-blur-sm border-none shadow-subtle hover:shadow-elevation transition-shadow duration-300">
+              <CardContent className="pt-8">
+                <div className="h-12 w-12 rounded-full bg-red-100 dark:bg-red-900/20 flex items-center justify-center mb-6">
+                  <span className="text-red-600 dark:text-red-400 font-bold text-xl">2</span>
+                </div>
+                <h3 className="text-xl font-bold mb-3">Caos financeiro</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Você não sabe exatamente quanto entrou, quanto saiu e qual é o lucro real no fim
+                  do mês, baseando decisões apenas em "achismos".
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-background/80 backdrop-blur-sm border-none shadow-subtle hover:shadow-elevation transition-shadow duration-300">
+              <CardContent className="pt-8">
+                <div className="h-12 w-12 rounded-full bg-red-100 dark:bg-red-900/20 flex items-center justify-center mb-6">
+                  <span className="text-red-600 dark:text-red-400 font-bold text-xl">3</span>
+                </div>
+                <h3 className="text-xl font-bold mb-3">Processos manuais</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Sua equipe gasta horas preciosas preenchendo relatórios ou cobrando clientes, ao
+                  invés de focar no que realmente importa: fechar negócios.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* The Solution Section (Features, objective approach) */}
+      <section className="py-24 container">
+        <div className="max-w-3xl mx-auto text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            A Solução: <span className="text-primary">VexaView</span>
+          </h2>
+          <p className="text-xl text-muted-foreground">
+            Um ecossistema único focado no que importa: escalar suas vendas e estruturar a gestão do
+            seu negócio.
+          </p>
+        </div>
+
+        <div className="space-y-24 max-w-6xl mx-auto">
+          {/* Feature 1: Chatbots */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="order-2 lg:order-1 relative group">
+              <div className="absolute -inset-2 bg-primary/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <img
+                src="https://img.usecurling.com/p/600/450?q=chat%20app&color=gray"
+                alt="Chatbots de Atendimento"
+                className="rounded-2xl shadow-elevation border border-muted relative z-10 w-full"
+              />
+            </div>
+            <div className="space-y-6 order-1 lg:order-2">
+              <div className="inline-flex items-center rounded-xl bg-primary/10 p-3.5">
+                <MessageSquareText className="h-7 w-7 text-primary" />
+              </div>
+              <h3 className="text-3xl md:text-4xl font-bold">
+                Atendimento 24/7 com Chatbots de IA
+              </h3>
+              <p className="text-lg text-muted-foreground">
+                Pare de perder clientes de madrugada ou nos finais de semana. Nossos bots
+                conversacionais qualificam leads e agendam reuniões automaticamente no seu WhatsApp
+                ou Site.
               </p>
-              <ul className="space-y-4">
-                {[
-                  'Automação de tarefas repetitivas',
-                  'Visão 360º do cliente',
-                  'Relatórios que você realmente entende',
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center">
-                    <div className="mr-4 rounded-full bg-primary p-1">
-                      <TrendingUp className="h-4 w-4 text-primary-foreground" />
-                    </div>
-                    <span className="font-medium">{item}</span>
-                  </li>
-                ))}
+              <ul className="space-y-4 pt-2">
+                <li className="flex items-center text-lg">
+                  <CheckCircle2 className="h-6 w-6 text-primary mr-3 shrink-0" /> Respostas
+                  imediatas e humanizadas
+                </li>
+                <li className="flex items-center text-lg">
+                  <CheckCircle2 className="h-6 w-6 text-primary mr-3 shrink-0" /> Qualificação
+                  automática de leads frios
+                </li>
+                <li className="flex items-center text-lg">
+                  <CheckCircle2 className="h-6 w-6 text-primary mr-3 shrink-0" /> Integração nativa
+                  direcionando para o CRM
+                </li>
               </ul>
             </div>
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary to-transparent rounded-2xl opacity-20 blur-xl"></div>
+          </div>
+
+          {/* Feature 2: CRM */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <div className="inline-flex items-center rounded-xl bg-primary/10 p-3.5">
+                <Users className="h-7 w-7 text-primary" />
+              </div>
+              <h3 className="text-3xl md:text-4xl font-bold">CRM de Vendas Ágil e Visual</h3>
+              <p className="text-lg text-muted-foreground">
+                Dê adeus às planilhas confusas. Acompanhe cada negociação em um quadro visual
+                intuitivo, saiba exatamente o próximo passo de cada lead e garanta que nenhum
+                negócio esfrie.
+              </p>
+              <ul className="space-y-4 pt-2">
+                <li className="flex items-center text-lg">
+                  <CheckCircle2 className="h-6 w-6 text-primary mr-3 shrink-0" /> Funil de vendas
+                  personalizável (Kanban)
+                </li>
+                <li className="flex items-center text-lg">
+                  <CheckCircle2 className="h-6 w-6 text-primary mr-3 shrink-0" /> Histórico
+                  centralizado de interações
+                </li>
+                <li className="flex items-center text-lg">
+                  <CheckCircle2 className="h-6 w-6 text-primary mr-3 shrink-0" /> Lembretes
+                  automáticos de follow-up
+                </li>
+              </ul>
+            </div>
+            <div className="relative group">
+              <div className="absolute -inset-2 bg-primary/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <img
-                src="https://img.usecurling.com/p/800/600?q=dashboard%20software&color=gray"
-                alt="Dashboard Preview"
-                className="rounded-2xl border border-white/10 shadow-2xl relative z-10"
+                src="https://img.usecurling.com/p/600/450?q=kanban%20board&color=rose"
+                alt="CRM Visual"
+                className="rounded-2xl shadow-elevation border border-muted relative z-10 w-full"
               />
+            </div>
+          </div>
+
+          {/* Feature 3: Dashboards */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="order-2 lg:order-1 relative group">
+              <div className="absolute -inset-2 bg-primary/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <img
+                src="https://img.usecurling.com/p/600/450?q=financial%20dashboard&color=red"
+                alt="Dashboards de Gestão"
+                className="rounded-2xl shadow-elevation border border-muted relative z-10 w-full"
+              />
+            </div>
+            <div className="space-y-6 order-1 lg:order-2">
+              <div className="inline-flex items-center rounded-xl bg-primary/10 p-3.5">
+                <BarChart3 className="h-7 w-7 text-primary" />
+              </div>
+              <h3 className="text-3xl md:text-4xl font-bold">Dashboards Financeiros e de Metas</h3>
+              <p className="text-lg text-muted-foreground">
+                Decisões baseadas em dados reais. Veja seu faturamento líquido, custos fixos, CAC e
+                a performance individual da sua equipe de vendas, tudo em tempo real.
+              </p>
+              <ul className="space-y-4 pt-2">
+                <li className="flex items-center text-lg">
+                  <CheckCircle2 className="h-6 w-6 text-primary mr-3 shrink-0" /> Visão clara de
+                  Receitas vs Despesas
+                </li>
+                <li className="flex items-center text-lg">
+                  <CheckCircle2 className="h-6 w-6 text-primary mr-3 shrink-0" /> Acompanhamento de
+                  cotas e metas de vendas
+                </li>
+                <li className="flex items-center text-lg">
+                  <CheckCircle2 className="h-6 w-6 text-primary mr-3 shrink-0" /> Relatórios
+                  exportáveis com um clique
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Video / Preview Section (Direct response style) */}
+      <section className="bg-secondary text-secondary-foreground py-24 relative overflow-hidden">
+        <div className="container relative z-10 text-center">
+          <div className="max-w-4xl mx-auto space-y-8">
+            <h2 className="text-3xl md:text-5xl font-bold leading-tight">
+              Veja o sistema operando e entenda como lucrar mais cortando o trabalho manual
+            </h2>
+
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 group cursor-pointer aspect-video bg-black/20">
+              <img
+                src="https://img.usecurling.com/p/1000/562?q=saas%20dashboard&color=black"
+                alt="Demonstração do Sistema"
+                className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="h-20 w-20 bg-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-[0_0_30px_rgba(var(--primary),0.5)]">
+                  <PlayCircle className="h-10 w-10 text-primary-foreground ml-1" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final Aggressive CTA */}
+      <section className="py-24 container">
+        <div className="max-w-4xl mx-auto bg-gradient-to-br from-primary/10 via-background to-background border border-primary/20 rounded-[2.5rem] p-10 md:p-16 text-center shadow-lg relative overflow-hidden">
+          <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div className="relative z-10 space-y-6">
+            <h2 className="text-4xl md:text-5xl font-bold">Pronto para transformar sua empresa?</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Junte-se a dezenas de PMEs que já pararam de perder dinheiro e automatizaram suas
+              vendas e finanças com a VexaView.
+            </p>
+
+            <div className="pt-6">
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground h-16 px-10 text-xl w-full sm:w-auto rounded-full shadow-elevation hover:scale-105 transition-all"
+                asChild
+              >
+                <Link to="/cadastro">
+                  Criar Minha Conta Gratuita <ChevronRight className="ml-2 h-6 w-6" />
+                </Link>
+              </Button>
+              <p className="text-sm text-muted-foreground mt-4">
+                Teste completo. Não precisa de cartão de crédito para iniciar.
+              </p>
             </div>
           </div>
         </div>
