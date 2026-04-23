@@ -213,7 +213,7 @@ export default function Index() {
               <img
                 src="https://img.usecurling.com/p/600/450?q=chatbot%20conversation&color=gray"
                 alt="Cliente conversando com Chatbot"
-                className="rounded-2xl shadow-elevation border border-muted relative z-10 w-full"
+                className="rounded-2xl shadow-elevation border border-muted relative z-10 w-full object-cover"
               />
             </div>
             <div className="space-y-6 order-1 lg:order-2">
