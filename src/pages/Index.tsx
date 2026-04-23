@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom'
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
 import Autoplay from 'embla-carousel-autoplay'
 import React from 'react'
+import crmImage from '@/assets/image-8d65c.png'
 
 export default function Index() {
   const plugin = React.useRef(Autoplay({ delay: 3000, stopOnInteraction: true }))
@@ -275,9 +276,9 @@ export default function Index() {
             <div className="relative group">
               <div className="absolute -inset-2 bg-primary/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <img
-                src="https://img.usecurling.com/p/600/450?q=kanban%20board&color=rose"
+                src={crmImage}
                 alt="CRM Visual"
-                className="rounded-2xl shadow-elevation border border-muted relative z-10 w-full"
+                className="rounded-2xl shadow-elevation border border-muted relative z-10 w-full object-cover"
               />
             </div>
           </div>

@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { CheckCircle2, LayoutDashboard, Target, Users, Zap } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import crmImage from '@/assets/image-8d65c.png'
 
 export default function CrmPage() {
   return (
@@ -24,8 +25,8 @@ export default function CrmPage() {
           </div>
           <div className="flex-1 w-full relative">
             <img
-              src="https://img.usecurling.com/p/600/400?q=kanban%20board&color=rose"
-              alt="CRM Kanban Board"
+              src={crmImage}
+              alt="CRM Dashboard"
               className="rounded-xl shadow-elevation border w-full object-cover"
             />
           </div>
