@@ -10,8 +10,9 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 import { cn } from '@/lib/utils'
-import { BarChart3, MessageSquareText, Users } from 'lucide-react'
+import { BarChart3, MessageSquareText, Users, LogOut } from 'lucide-react'
 import * as React from 'react'
+import { useAuth } from '@/hooks/use-auth'
 
 const solutions = [
   {
@@ -35,6 +36,8 @@ const solutions = [
 ]
 
 export function Header() {
+  const { user, signOut } = useAuth()
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
       <div className="container flex h-16 items-center justify-between">
@@ -85,15 +88,29 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-4">
-          <Button variant="ghost" className="hidden sm:inline-flex" asChild>
-            <Link to="/login">Entrar</Link>
-          </Button>
-          <Button
-            className="bg-primary hover:bg-secondary text-primary-foreground transition-all duration-300 hover:scale-105"
-            asChild
-          >
-            <Link to="/contato">Solicitar Demonstração</Link>
-          </Button>
+          {user ? (
+            <>
+              <span className="text-sm text-muted-foreground hidden sm:inline-flex">
+                Olá, {user.email}
+              </span>
+              <Button variant="ghost" size="sm" onClick={() => signOut()}>
+                <LogOut className="h-4 w-4 mr-2" />
+                Sair
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button variant="ghost" className="hidden sm:inline-flex" asChild>
+                <Link to="/login">Entrar</Link>
+              </Button>
+              <Button
+                className="bg-primary hover:bg-secondary text-primary-foreground transition-all duration-300 hover:scale-105"
+                asChild
+              >
+                <Link to="/cadastro">Criar Conta</Link>
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </header>
