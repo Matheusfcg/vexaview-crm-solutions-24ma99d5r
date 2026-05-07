@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom'
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
 import Autoplay from 'embla-carousel-autoplay'
 import React from 'react'
-import crmImage from '@/assets/image-8d65c.png'
+import crmImage from '@/assets/image-425f1.png'
 
 export default function Index() {
   const plugin = React.useRef(Autoplay({ delay: 3000, stopOnInteraction: true }))
