@@ -24,6 +24,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
+import { extractFieldErrors, getErrorMessage } from '@/lib/pocketbase/errors'
 
 const formSchema = z.object({
   firstName: z.string().min(2, 'Nome é obrigatório'),
@@ -84,7 +85,7 @@ export default function CadastroPage() {
       })
 
       if (error) {
-        throw new Error(error.message)
+        throw error
       }
 
       toast({
@@ -93,11 +94,18 @@ export default function CadastroPage() {
       })
       navigate('/')
     } catch (error: any) {
-      toast({
-        title: 'Erro ao criar conta',
-        description: error.message || 'Verifique seus dados e tente novamente.',
-        variant: 'destructive',
-      })
+      const fieldErrors = extractFieldErrors(error)
+      if (Object.keys(fieldErrors).length > 0) {
+        Object.keys(fieldErrors).forEach((key) => {
+          form.setError(key as any, { message: fieldErrors[key] })
+        })
+      } else {
+        toast({
+          title: 'Erro ao criar conta',
+          description: getErrorMessage(error) || 'Verifique seus dados e tente novamente.',
+          variant: 'destructive',
+        })
+      }
     } finally {
       setIsSubmitting(false)
     }

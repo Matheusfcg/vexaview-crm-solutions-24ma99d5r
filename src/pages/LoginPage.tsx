@@ -16,6 +16,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
+import { getErrorMessage, extractFieldErrors } from '@/lib/pocketbase/errors'
 
 const formSchema = z.object({
   email: z.string().email('E-mail inválido'),
@@ -42,7 +43,7 @@ export default function LoginPage() {
       const { error } = await signIn(values.email, values.password)
 
       if (error) {
-        throw new Error(error.message)
+        throw error
       }
 
       toast({
@@ -51,11 +52,18 @@ export default function LoginPage() {
       })
       navigate('/')
     } catch (error: any) {
-      toast({
-        title: 'Erro ao entrar',
-        description: error.message || 'Credenciais inválidas.',
-        variant: 'destructive',
-      })
+      const fieldErrors = extractFieldErrors(error)
+      if (Object.keys(fieldErrors).length > 0) {
+        Object.keys(fieldErrors).forEach((key) => {
+          form.setError(key as any, { message: fieldErrors[key] })
+        })
+      } else {
+        toast({
+          title: 'Erro ao entrar',
+          description: getErrorMessage(error) || 'Credenciais inválidas.',
+          variant: 'destructive',
+        })
+      }
     } finally {
       setIsSubmitting(false)
     }

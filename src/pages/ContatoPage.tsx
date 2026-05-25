@@ -23,6 +23,8 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { Building2, Mail, Phone } from 'lucide-react'
+import pb from '@/lib/pocketbase/client'
+import { extractFieldErrors, getErrorMessage } from '@/lib/pocketbase/errors'
 
 const formSchema = z.object({
   name: z.string().min(2, 'Nome deve ter pelo menos 2 caracteres.'),
@@ -47,14 +49,16 @@ export default function ContatoPage() {
     },
   })
 
-  // Mocking Supabase insertion
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true)
     try {
-      // Simulate API call to Supabase
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-
-      console.log('Lead salvo no Supabase (mock):', values)
+      await pb.collection('contacts').create({
+        name: values.name,
+        email: values.email,
+        companySize: values.companySize,
+        problem: values.problem,
+        message: values.message,
+      })
 
       toast({
         title: 'Demonstração Solicitada!',
@@ -62,11 +66,18 @@ export default function ContatoPage() {
       })
       form.reset()
     } catch (error) {
-      toast({
-        title: 'Erro',
-        description: 'Ocorreu um erro ao enviar. Tente novamente.',
-        variant: 'destructive',
-      })
+      const fieldErrors = extractFieldErrors(error)
+      if (Object.keys(fieldErrors).length > 0) {
+        Object.keys(fieldErrors).forEach((key) => {
+          form.setError(key as any, { message: fieldErrors[key] })
+        })
+      } else {
+        toast({
+          title: 'Erro',
+          description: getErrorMessage(error),
+          variant: 'destructive',
+        })
+      }
     } finally {
       setIsSubmitting(false)
     }
