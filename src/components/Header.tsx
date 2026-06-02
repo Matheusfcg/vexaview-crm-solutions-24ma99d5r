@@ -13,6 +13,7 @@ import { cn } from '@/lib/utils'
 import { BarChart3, MessageSquareText, Users, LogOut } from 'lucide-react'
 import * as React from 'react'
 import { useAuth } from '@/hooks/use-auth'
+import { usePlanModal } from '@/contexts/plan-modal-context'
 
 const solutions = [
   {
@@ -37,6 +38,7 @@ const solutions = [
 
 export function Header() {
   const { user, signOut } = useAuth()
+  const { openModal } = usePlanModal()
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
@@ -66,22 +68,20 @@ export function Header() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link to="/#sobre">
-                  <NavigationMenuLink
-                    className={cn(navigationMenuTriggerStyle(), 'bg-transparent')}
-                  >
-                    Sobre Nós
-                  </NavigationMenuLink>
-                </Link>
+                <NavigationMenuLink
+                  className={cn(navigationMenuTriggerStyle(), 'bg-transparent')}
+                  href="/#sobre"
+                >
+                  Sobre Nós
+                </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link to="/#casos">
-                  <NavigationMenuLink
-                    className={cn(navigationMenuTriggerStyle(), 'bg-transparent')}
-                  >
-                    Casos de Sucesso
-                  </NavigationMenuLink>
-                </Link>
+                <NavigationMenuLink
+                  className={cn(navigationMenuTriggerStyle(), 'bg-transparent')}
+                  href="/#casos"
+                >
+                  Casos de Sucesso
+                </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
@@ -111,6 +111,13 @@ export function Header() {
               </Button>
             </>
           )}
+          <Button
+            variant="outline"
+            className="hidden lg:inline-flex border-primary text-primary hover:bg-primary/10 ml-2"
+            onClick={() => openModal()}
+          >
+            Quer ser um vexa
+          </Button>
         </div>
       </div>
     </header>
@@ -125,6 +132,7 @@ const ListItem = React.forwardRef<
     <li>
       <NavigationMenuLink asChild>
         <Link
+          ref={ref as any}
           to={href || '#'}
           className={cn(
             'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',

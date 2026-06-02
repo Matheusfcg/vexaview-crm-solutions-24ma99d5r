@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import {
   BarChart3,
   CheckCircle2,
@@ -7,15 +7,18 @@ import {
   MessageSquareText,
   PlayCircle,
   Users,
+  MonitorSmartphone,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
 import Autoplay from 'embla-carousel-autoplay'
 import React from 'react'
 import crmImage from '@/assets/image-425f1.png'
+import { usePlanModal } from '@/contexts/plan-modal-context'
 
 export default function Index() {
   const plugin = React.useRef(Autoplay({ delay: 3000, stopOnInteraction: true }))
+  const { openModal } = usePlanModal()
 
   return (
     <div className="flex flex-col">
@@ -36,7 +39,6 @@ export default function Index() {
             {/* Visual Glass Box Behind Content */}
             <div className="absolute inset-0 -z-10 bg-background/40 backdrop-blur-3xl rounded-[3rem] border border-primary/20 shadow-2xl scale-105 md:scale-110 transform translate-y-2">
               <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent rounded-[3rem]"></div>
-              {/* Inner glowing edge */}
               <div className="absolute inset-px rounded-[calc(3rem-1px)] border border-white/10 dark:border-white/5 pointer-events-none"></div>
             </div>
 
@@ -84,9 +86,9 @@ export default function Index() {
                   size="lg"
                   variant="outline"
                   className="h-16 px-10 text-xl w-full sm:w-auto bg-background/80 backdrop-blur-md border-primary/20 hover:bg-primary/10 rounded-full transition-all text-foreground"
-                  asChild
+                  onClick={() => openModal()}
                 >
-                  <Link to="/contato">Falar com um Especialista</Link>
+                  Quer ser um vexa
                 </Button>
               </div>
               <p
@@ -108,10 +110,7 @@ export default function Index() {
           </p>
           <div className="max-w-6xl mx-auto">
             <Carousel
-              opts={{
-                align: 'start',
-                loop: true,
-              }}
+              opts={{ align: 'start', loop: true }}
               plugins={[plugin.current]}
               className="w-full"
             >
@@ -138,7 +137,7 @@ export default function Index() {
         </div>
       </section>
 
-      {/* The "Pain" Section - Focused on immediate connection with user problems */}
+      {/* The "Pain" Section */}
       <section className="py-20 bg-muted/30 border-y">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center mb-12">
@@ -194,7 +193,7 @@ export default function Index() {
         </div>
       </section>
 
-      {/* The Solution Section (Features, objective approach) */}
+      {/* The Solution Section */}
       <section className="py-24 container">
         <div className="max-w-3xl mx-auto text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -207,7 +206,7 @@ export default function Index() {
         </div>
 
         <div className="space-y-24 max-w-6xl mx-auto">
-          {/* Feature 1: Chatbots */}
+          {/* Feature 1 */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1 relative group">
               <div className="absolute -inset-2 bg-primary/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -246,7 +245,7 @@ export default function Index() {
             </div>
           </div>
 
-          {/* Feature 2: CRM */}
+          {/* Feature 2 */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <div className="inline-flex items-center rounded-xl bg-primary/10 p-3.5">
@@ -283,7 +282,7 @@ export default function Index() {
             </div>
           </div>
 
-          {/* Feature 3: Dashboards */}
+          {/* Feature 3 */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1 relative group">
               <div className="absolute -inset-2 bg-primary/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -321,7 +320,54 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Video / Preview Section (Direct response style) */}
+      {/* Website Creation Section */}
+      <section className="py-24 bg-muted/30 border-t">
+        <div className="container">
+          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <div className="space-y-6">
+              <div className="inline-flex items-center rounded-xl bg-primary/10 p-3.5">
+                <MonitorSmartphone className="h-7 w-7 text-primary" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold">
+                Criação de <span className="text-primary">Sites Profissionais</span>
+              </h2>
+              <p className="text-xl font-semibold text-foreground">
+                Nós fazemos sites para a sua empresa.
+              </p>
+              <p className="text-lg text-muted-foreground">
+                Além de oferecer o melhor CRM e automação, a VexaView também desenvolve sites
+                modernos e de alta performance, sob medida para a sua empresa. Potencialize sua
+                presença digital com uma plataforma rápida, responsiva e pronta para converter
+                visitantes em clientes.
+              </p>
+              <ul className="space-y-4 pt-2">
+                <li className="flex items-center text-lg">
+                  <CheckCircle2 className="h-6 w-6 text-primary mr-3 shrink-0" /> Design exclusivo e
+                  responsivo
+                </li>
+                <li className="flex items-center text-lg">
+                  <CheckCircle2 className="h-6 w-6 text-primary mr-3 shrink-0" /> Otimizado para SEO
+                  e conversão
+                </li>
+                <li className="flex items-center text-lg">
+                  <CheckCircle2 className="h-6 w-6 text-primary mr-3 shrink-0" /> Integração
+                  perfeita com nosso CRM
+                </li>
+              </ul>
+            </div>
+            <div className="relative group">
+              <div className="absolute -inset-2 bg-primary/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <img
+                src="https://img.usecurling.com/p/600/450?q=website%20design&color=blue"
+                alt="Criação de Sites Profissionais"
+                className="rounded-2xl shadow-elevation border border-muted relative z-10 w-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Video Section */}
       <section className="bg-secondary text-secondary-foreground py-24 relative overflow-hidden">
         <div className="container relative z-10 text-center">
           <div className="max-w-4xl mx-auto space-y-8">
@@ -345,6 +391,86 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Plans Section */}
+      <section id="planos" className="py-24 bg-muted/30 border-t scroll-mt-16">
+        <div className="container">
+          <div className="max-w-3xl mx-auto text-center mb-16 space-y-4">
+            <h2 className="text-4xl md:text-5xl font-bold">Planos VexaView</h2>
+            <p className="text-xl text-muted-foreground">
+              Escolha o plano ideal para a sua empresa e faça parte da comunidade Vexa.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Basic Plan */}
+            <Card className="flex flex-col relative border-primary/20 bg-background/80 backdrop-blur-sm hover:shadow-elevation transition-shadow duration-300">
+              <CardHeader>
+                <CardTitle className="text-2xl">Basic</CardTitle>
+                <div className="text-4xl font-bold mt-4">
+                  R$ 150
+                  <span className="text-lg text-muted-foreground font-normal">/mês</span>
+                </div>
+              </CardHeader>
+              <CardContent className="flex-1">
+                <ul className="space-y-4 text-muted-foreground">
+                  <li className="flex items-start">
+                    <CheckCircle2 className="h-5 w-5 text-primary mr-2 shrink-0 mt-0.5" />
+                    Acesso ao CRM Vexa
+                  </li>
+                </ul>
+              </CardContent>
+              <div className="p-6 pt-0 mt-auto">
+                <Button
+                  className="w-full"
+                  size="lg"
+                  variant="outline"
+                  onClick={() => openModal('basic')}
+                >
+                  Finalizar compra
+                </Button>
+              </div>
+            </Card>
+
+            {/* Premium Plan */}
+            <Card className="flex flex-col relative border-primary shadow-[0_0_30px_hsl(var(--primary)/0.2)] bg-background/80 backdrop-blur-sm hover:scale-[1.02] transition-transform duration-300">
+              <div className="absolute -top-4 inset-x-0 flex justify-center">
+                <span className="bg-primary text-primary-foreground text-sm font-bold py-1 px-4 rounded-full">
+                  Recomendado
+                </span>
+              </div>
+              <CardHeader>
+                <CardTitle className="text-2xl">Premium</CardTitle>
+                <div className="text-4xl font-bold mt-4">
+                  R$ 250
+                  <span className="text-lg text-muted-foreground font-normal">/mês</span>
+                </div>
+              </CardHeader>
+              <CardContent className="flex-1">
+                <ul className="space-y-4 text-muted-foreground">
+                  <li className="flex items-start font-medium text-foreground">
+                    <CheckCircle2 className="h-5 w-5 text-primary mr-2 shrink-0 mt-0.5" />
+                    Acesso ao CRM Vexa
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle2 className="h-5 w-5 text-primary mr-2 shrink-0 mt-0.5" />
+                    Acesso aos nossos Dashboards
+                  </li>
+                </ul>
+              </CardContent>
+              <div className="p-6 pt-0 mt-auto">
+                <Button
+                  className="w-full bg-primary hover:bg-primary/90"
+                  size="lg"
+                  onClick={() => openModal('premium')}
+                >
+                  Finalizar compra
+                </Button>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Final Aggressive CTA */}
       <section className="py-24 container">
         <div className="max-w-4xl mx-auto bg-gradient-to-br from-primary/10 via-background to-background border border-primary/20 rounded-[2.5rem] p-10 md:p-16 text-center shadow-lg relative overflow-hidden">
@@ -357,7 +483,7 @@ export default function Index() {
               vendas e finanças com a VexaView.
             </p>
 
-            <div className="pt-6">
+            <div className="pt-6 flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground h-16 px-10 text-xl w-full sm:w-auto rounded-full shadow-elevation hover:scale-105 transition-all"
@@ -367,10 +493,19 @@ export default function Index() {
                   Criar Minha Conta Gratuita <ChevronRight className="ml-2 h-6 w-6" />
                 </Link>
               </Button>
-              <p className="text-sm text-muted-foreground mt-4">
-                Teste completo. Não precisa de cartão de crédito para iniciar.
-              </p>
+
+              <Button
+                size="lg"
+                variant="outline"
+                className="h-16 px-10 text-xl w-full sm:w-auto rounded-full shadow-elevation hover:scale-105 transition-all border-primary/50"
+                onClick={() => openModal()}
+              >
+                Quer ser um vexa
+              </Button>
             </div>
+            <p className="text-sm text-muted-foreground mt-4">
+              Teste completo. Não precisa de cartão de crédito para iniciar.
+            </p>
           </div>
         </div>
       </section>

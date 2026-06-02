@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-25T11:40:24.643Z",
+  "generatedAt": "2026-06-02T20:20:04.495Z",
   "collections": [
     {
       "name": "users",
@@ -155,6 +155,46 @@
           "name": "message",
           "type": "text",
           "required": false,
+          "system": false
+        },
+        {
+          "name": "created",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": ["onCreate"]
+        },
+        {
+          "name": "updated",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": ["onCreate", "onUpdate"]
+        }
+      ],
+      "indexes": []
+    },
+    {
+      "name": "subscriptions",
+      "type": "base",
+      "apiRules": {
+        "list": "@request.auth.id != ''",
+        "view": "@request.auth.id != ''",
+        "create": "",
+        "update": "@request.auth.id != ''",
+        "delete": "@request.auth.id != ''"
+      },
+      "fields": [
+        {
+          "name": "email",
+          "type": "email",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "plan_type",
+          "type": "text",
+          "required": true,
           "system": false
         },
         {

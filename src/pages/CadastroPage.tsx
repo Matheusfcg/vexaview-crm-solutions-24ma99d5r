@@ -90,7 +90,7 @@ export default function CadastroPage() {
 
       toast({
         title: 'Conta criada com sucesso!',
-        description: 'Bem-vindo à VexaView. Você já pode acessar o sistema.',
+        description: 'Você já pode acessar o sistema.',
       })
       navigate('/')
     } catch (error: any) {
