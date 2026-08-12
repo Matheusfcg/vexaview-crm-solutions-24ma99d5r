@@ -67,11 +67,11 @@ export function PlanModalProvider({ children }: { children: ReactNode }) {
           {step === 'plans' ? (
             <>
               <DialogHeader>
-                <DialogTitle className="text-2xl font-bold text-center">
-                  Escolha seu plano VexaView
+                <DialogTitle className="text-3xl font-bold text-center">
+                  Planos VexaView
                 </DialogTitle>
                 <DialogDescription className="text-center text-lg mt-2">
-                  Soluções para PMEs em todo o Brasil. Comece a transformar seu negócio agora.
+                  Escolha o plano ideal para a sua empresa e faça parte da comunidade Vexa.
                 </DialogDescription>
               </DialogHeader>
               <div className="grid md:grid-cols-2 gap-6 mt-6">
@@ -93,7 +93,7 @@ export function PlanModalProvider({ children }: { children: ReactNode }) {
                     variant="outline"
                     className="w-full"
                   >
-                    Selecionar Basic
+                    Finalizar compra
                   </Button>
                 </div>
                 {/* Premium */}
@@ -122,7 +122,7 @@ export function PlanModalProvider({ children }: { children: ReactNode }) {
                     onClick={() => handlePlanSelect('premium')}
                     className="w-full bg-primary hover:bg-primary/90"
                   >
-                    Selecionar Premium
+                    Finalizar compra
                   </Button>
                 </div>
               </div>

@@ -4,10 +4,12 @@ import { Input } from '@/components/ui/input'
 import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react'
 import { useState } from 'react'
 import { useToast } from '@/hooks/use-toast'
+import { usePlanModal } from '@/contexts/plan-modal-context'
 
 export function Footer() {
   const [email, setEmail] = useState('')
   const { toast } = useToast()
+  const { openModal } = usePlanModal()
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault()
@@ -49,10 +51,10 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Soluções</h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li>
-                <Link to="/crm" className="hover:text-primary transition-colors">
-                  CRM Vexa
-                </Link>
-              </li>
+                <a href="/#sobre" className="hover:text-primary transition-colors">
+                  Sobre Nós
+                </a>
+              </li>{' '}
               <li>
                 <Link to="/chatbots" className="hover:text-primary transition-colors">
                   Chatbots Inteligentes
@@ -64,9 +66,12 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/precos" className="hover:text-primary transition-colors">
+                <button
+                  onClick={() => openModal()}
+                  className="hover:text-primary transition-colors cursor-pointer text-left"
+                >
                   Preços
-                </Link>
+                </button>
               </li>
             </ul>
           </div>
@@ -74,9 +79,9 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Empresa</h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li>
-                <Link to="/sobre" className="hover:text-primary transition-colors">
+                <a href="/#sobre" className="hover:text-primary transition-colors">
                   Sobre Nós
-                </Link>
+                </a>
               </li>
               <li>
                 <Link to="/contato" className="hover:text-primary transition-colors">

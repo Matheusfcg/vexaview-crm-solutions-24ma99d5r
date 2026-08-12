@@ -14,6 +14,9 @@ import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carouse
 import Autoplay from 'embla-carousel-autoplay'
 import React from 'react'
 import crmImage from '@/assets/image-425f1.png'
+import logoAmovink from '@/assets/logo-amovink.jpg-725ca.jpeg'
+import logoSolution from '@/assets/logo-solution2022.jpg-b902c.jpeg'
+import logoZahra from '@/assets/logozahra-165d2.png'
 import { usePlanModal } from '@/contexts/plan-modal-context'
 
 export default function Index() {
@@ -114,23 +117,21 @@ export default function Index() {
               plugins={[plugin.current]}
               className="w-full"
             >
-              <CarouselContent className="items-center -ml-4 md:-ml-8">
-                {['google', 'microsoft', 'spotify', 'amazon', 'netflix', 'meta'].map(
-                  (logo, index) => (
-                    <CarouselItem
-                      key={index}
-                      className="pl-4 md:pl-8 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6"
-                    >
-                      <div className="flex items-center justify-center h-16 opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300">
-                        <img
-                          src={`https://img.usecurling.com/i?q=${logo}&color=solid-black&shape=fill`}
-                          alt={`Logo ${logo}`}
-                          className="max-h-8 max-w-[120px] object-contain dark:invert"
-                        />
-                      </div>
-                    </CarouselItem>
-                  ),
-                )}
+              <CarouselContent className="items-center justify-center -ml-4 md:-ml-8">
+                {[logoAmovink, logoSolution, logoZahra].map((logo, index) => (
+                  <CarouselItem
+                    key={index}
+                    className="pl-4 md:pl-8 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5"
+                  >
+                    <div className="flex items-center justify-center h-20 opacity-70 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300">
+                      <img
+                        src={logo}
+                        alt={`Logo Parceiro ${index + 1}`}
+                        className="max-h-16 max-w-[140px] object-contain rounded-md"
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
               </CarouselContent>
             </Carousel>
           </div>
@@ -367,107 +368,50 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Video Section */}
-      <section className="bg-secondary text-secondary-foreground py-24 relative overflow-hidden">
-        <div className="container relative z-10 text-center">
-          <div className="max-w-4xl mx-auto space-y-8">
-            <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-              Veja o sistema operando e entenda como lucrar mais cortando o trabalho manual
+      {/* Sobre Section */}
+      <section id="sobre" className="py-24 bg-muted/30 border-t scroll-mt-16">
+        <div className="container max-w-4xl mx-auto">
+          <div className="text-center space-y-6 mb-16">
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
+              Sobre a VexaView
             </h2>
-
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 group cursor-pointer aspect-video bg-black/20">
-              <img
-                src="https://img.usecurling.com/p/1000/562?q=saas%20dashboard&color=black"
-                alt="Demonstração do Sistema"
-                className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="h-20 w-20 bg-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-[0_0_30px_rgba(var(--primary),0.5)]">
-                  <PlayCircle className="h-10 w-10 text-primary-foreground ml-1" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Plans Section */}
-      <section id="planos" className="py-24 bg-muted/30 border-t scroll-mt-16">
-        <div className="container">
-          <div className="max-w-3xl mx-auto text-center mb-16 space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold">Planos VexaView</h2>
-            <p className="text-xl text-muted-foreground">
-              Escolha o plano ideal para a sua empresa e faça parte da comunidade Vexa.
-            </p>
+            <div className="h-1.5 w-20 bg-primary mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Basic Plan */}
-            <Card className="flex flex-col relative border-primary/20 bg-background/80 backdrop-blur-sm hover:shadow-elevation transition-shadow duration-300">
-              <CardHeader>
-                <CardTitle className="text-2xl">Basic</CardTitle>
-                <div className="text-4xl font-bold mt-4">
-                  R$ 150
-                  <span className="text-lg text-muted-foreground font-normal">/mês</span>
-                </div>
-              </CardHeader>
-              <CardContent className="flex-1">
-                <ul className="space-y-4 text-muted-foreground">
-                  <li className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-primary mr-2 shrink-0 mt-0.5" />
-                    Acesso ao CRM Vexa
-                  </li>
-                </ul>
-              </CardContent>
-              <div className="p-6 pt-0 mt-auto">
-                <Button
-                  className="w-full"
-                  size="lg"
-                  variant="outline"
-                  onClick={() => openModal('basic')}
-                >
-                  Finalizar compra
-                </Button>
-              </div>
-            </Card>
+          <Card className="border-none shadow-elevation bg-background/60 backdrop-blur-sm transition-shadow duration-500 hover:shadow-2xl">
+            <CardContent className="p-8 md:p-12 space-y-8 text-lg leading-relaxed text-muted-foreground">
+              <p className="text-foreground font-medium text-2xl leading-snug">
+                Na VexaView, acreditamos que a tecnologia deve simplificar processos, fortalecer
+                relacionamentos e impulsionar resultados.
+              </p>
 
-            {/* Premium Plan */}
-            <Card className="flex flex-col relative border-primary shadow-[0_0_30px_hsl(var(--primary)/0.2)] bg-background/80 backdrop-blur-sm hover:scale-[1.02] transition-transform duration-300">
-              <div className="absolute -top-4 inset-x-0 flex justify-center">
-                <span className="bg-primary text-primary-foreground text-sm font-bold py-1 px-4 rounded-full">
-                  Recomendado
-                </span>
+              <div className="space-y-6">
+                <p>
+                  Somos uma plataforma especializada em CRM e automação comercial, desenvolvida para
+                  ajudar empresas a organizarem seus clientes, acompanharem oportunidades de negócio
+                  e otimizarem suas operações de vendas de forma inteligente e eficiente.
+                </p>
+                <p>
+                  Nossa missão é fornecer ferramentas modernas e intuitivas que permitam às empresas
+                  ter mais controle sobre seus processos, aumentar a produtividade de suas equipes e
+                  construir conexões mais fortes com seus clientes.
+                </p>
+                <p>
+                  Com foco em inovação, praticidade e crescimento, a VexaView transforma dados em
+                  oportunidades e ajuda negócios a alcançarem novos níveis de desempenho e
+                  organização.
+                </p>
               </div>
-              <CardHeader>
-                <CardTitle className="text-2xl">Premium</CardTitle>
-                <div className="text-4xl font-bold mt-4">
-                  R$ 250
-                  <span className="text-lg text-muted-foreground font-normal">/mês</span>
-                </div>
-              </CardHeader>
-              <CardContent className="flex-1">
-                <ul className="space-y-4 text-muted-foreground">
-                  <li className="flex items-start font-medium text-foreground">
-                    <CheckCircle2 className="h-5 w-5 text-primary mr-2 shrink-0 mt-0.5" />
-                    Acesso ao CRM Vexa
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-primary mr-2 shrink-0 mt-0.5" />
-                    Acesso aos nossos Dashboards
-                  </li>
-                </ul>
-              </CardContent>
-              <div className="p-6 pt-0 mt-auto">
-                <Button
-                  className="w-full bg-primary hover:bg-primary/90"
-                  size="lg"
-                  onClick={() => openModal('premium')}
-                >
-                  Finalizar compra
-                </Button>
+
+              <div className="pt-8 border-t border-border/50">
+                <p className="text-foreground font-bold italic text-xl relative inline-block">
+                  Mais do que um sistema, somos um parceiro estratégico para empresas que desejam
+                  crescer com tecnologia, automação e gestão inteligente.
+                  <span className="absolute -bottom-1 left-0 w-12 h-1 bg-primary rounded-full"></span>
+                </p>
               </div>
-            </Card>
-          </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 

@@ -51,7 +51,6 @@ export function Header() {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent">Soluções</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                     {solutions.map((item) => (
@@ -67,22 +66,8 @@ export function Header() {
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink
-                  className={cn(navigationMenuTriggerStyle(), 'bg-transparent')}
-                  href="/#sobre"
-                >
-                  Sobre Nós
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink
-                  className={cn(navigationMenuTriggerStyle(), 'bg-transparent')}
-                  href="/#casos"
-                >
-                  Casos de Sucesso
-                </NavigationMenuLink>
-              </NavigationMenuItem>
+              <NavigationMenuItem></NavigationMenuItem>
+              <NavigationMenuItem></NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </div>
